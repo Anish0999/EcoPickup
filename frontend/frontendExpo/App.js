@@ -4,16 +4,17 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from "@react-navigation/native-stack"; // check to see if it works
-
-
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeScreen from './screens/HomeScreen';
 
 export default function App() {
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+       <NavigationContainer>
+        <HomeScreen/>
+        </NavigationContainer>
+    </Provider>    
   );
 }
 

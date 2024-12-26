@@ -27,7 +27,7 @@ export const navigationSlice = createSlice({
 })
 
 // Actions (Setters)
-export const { setOrigin, setPickupDestination, setDropoffDestination, setTravelTimeInformation } = createSlice.actions;
+export const { setOrigin, setPickupDestination, setDropoffDestination, setTravelTimeInformation } = navigationSlice.actions;
 
 // Selectors
 export const selectOrigin = (state) => state.navigation.origin;
