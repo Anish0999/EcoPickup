@@ -10,18 +10,11 @@ import Oppurtunities from "./Oppurtunities";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from '@expo/vector-icons'; 
 import { useState } from "react";
+import TabBar from "../components/TabBar";
 
 const HomeScreen = () => {
     
 const Stack = createNativeStackNavigator();
-const navigation = useNavigation();
-
-const [car, changeCar] = useState("car-sport");
-const [money, changeMoney] = useState("cash-outline");
-const [opp, changeOpp] = useState("mail-outline");
-
-
-
   return (
      <SafeAreaView>
 
@@ -52,34 +45,7 @@ const [opp, changeOpp] = useState("mail-outline");
         </View>
 
         <View style={styles.tabContainer}>
-            <TouchableOpacity onPress={()=>{navigation.navigate("MapScreen") 
-                changeCar("car-sport")
-                changeMoney("cash-outline")
-                changeOpp("mail-outline")}}>
-                <Ionicons name={`${car}`} size={40} color="black" />
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={()=>{navigation.navigate("OppurtunitiesScreen")
-                 changeCar("car-sport-outline")
-                 changeMoney("cash-outline")
-                 changeOpp("mail")
-            }}>
-            <Ionicons name={`${opp}`} size={40} color="black"/>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={()=>{navigation.navigate("EarningsScreen")
-                changeCar("car-sport-outline")
-                changeMoney("cash")
-                changeOpp("mail-outline")
-            }}>
-                <Ionicons name={`${money}`} size={40} color="black"/>
-            </TouchableOpacity>
-
-            
-            
-            {/* <TouchableOpacity onPress={()=>navigation.navigate("EarningsScreen")}>
-                
-            </TouchableOpacity> */}
+            <TabBar/>
         </View>
      </SafeAreaView>
   );
@@ -91,15 +57,12 @@ const styles = StyleSheet.create({
     mapContainer: {
         borderWidth: 1,
         // borderColor: "green",
-        height: 750,
+        height: 720,
     },
     tabContainer: {
         borderWidth: 1,
         borderColor: "gray",
-        height: 70,
+        height: 110,
         backgroundColor: "white",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-evenly"
     }
 });
