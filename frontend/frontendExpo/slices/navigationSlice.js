@@ -12,13 +12,13 @@ export const navigationSlice = createSlice({
     initialState,
     reducers: {
         setOrigin: (state, action) => {
-            state.origin = action.origin;
+            state.origin = action.payload;
         },
         setPickupDestination: (state, action) => {
-            state.pickupDestination = action.origin;
+            state.pickupDestination = action.payload;
         },
         setDropoffDestination: (state, action) => {
-            state.dropoffDestination = action.origin;
+            state.dropoffDestination = action.payload;
         },
         setTravelTimeInformation: (state, action) => {
             state.travelTimeInformation = action.payload;

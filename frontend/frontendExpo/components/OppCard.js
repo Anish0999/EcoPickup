@@ -2,10 +2,25 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import tw from 'tailwind-react-native-classnames';
+import { setOrigin, setPickupDestination, setDropoffDestination } from '../slices/navigationSlice';
+import { useDispatch } from 'react-redux';
 
 const lineBarIMG = require("../images/linebar.png");
 
-const OppCard = () => {
+const OppCard = ({startingLocation, pickUpInfo, pickUpAddress, dropOffInfo, dropOffAddress, startCoords, pickUpCoords, dropOffCoords}) => {
+
+    const dispatch = useDispatch();
+
+  const handleAccept = (sCoords, pCoords, dCoords) => {
+    // console.log(sCoords);
+    // console.log(pCoords);
+    // console.log(dCoords);
+
+    dispatch(setOrigin(sCoords));
+    dispatch(setPickupDestination(pCoords));
+    dispatch(setDropoffDestination(dCoords));
+  }
+
   return (
       <View style={styles.container}>
           
@@ -19,9 +34,9 @@ const OppCard = () => {
                       style={styles.linebar}
                   />
                   <View style={styles.info}>
-                      <View><Text>Palantir Tech - Your Location</Text></View>
-                      <View><Text>6 mins (3.1 mi) away - Pickup</Text><Text>Shoreview(AddressHere)</Text></View>
-                      <View><Text>3 mins (0.8mi) away</Text><Text>1300 Grey Fox Rd - Trash Drop Off</Text></View>
+                      <View><Text>{startingLocation}</Text></View>
+                      <View><Text>{pickUpInfo}</Text><Text>{pickUpAddress}</Text></View>
+                      <View><Text>{dropOffInfo}</Text><Text>{dropOffAddress}</Text></View>
                       {/* style={tw`border h-8`} */}
                   </View>
               </View>
@@ -29,7 +44,7 @@ const OppCard = () => {
   
               <View style={styles.bottom}>
                   <View>
-                      <TouchableOpacity>
+                      <TouchableOpacity onPress={() => {handleAccept(startCoords, pickUpCoords, dropOffCoords)}}>
                           <Text>Accept</Text>
                       </TouchableOpacity>
                   </View>
