@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createNativeStackNavigator} from "@react-navigation/native-stack";
 import React from "react";
 import tw from "tailwind-react-native-classnames";
 import MapScreen from "./MapScreen";
@@ -11,6 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from '@expo/vector-icons'; 
 import { useState } from "react";
 import TabBar from "../components/TabBar";
+import { CardStyleInterpolators } from "@react-navigation/stack";
 
 const HomeScreen = () => {
     
@@ -19,7 +20,7 @@ const Stack = createNativeStackNavigator();
      <SafeAreaView>
 
         <View style={styles.mapContainer}>
-                <Stack.Navigator>
+        <Stack.Navigator>
                     <Stack.Screen
                         name="MapScreen"
                         component={MapScreen}
