@@ -7,22 +7,24 @@ import {
   selectOrigin,
   selectPickupDestination,
   selectDropoffDestination,
+  setHomeAnimation
 } from "../slices/navigationSlice";
 import { Marker } from "react-native-maps";
 import { GOOGLE_MAPS_APIKEY } from "@env";
 import MapViewDirections from "react-native-maps-directions";
 import { useState } from "react";
 import { useRef } from "react";
-
+import { useDispatch } from "react-redux";
 
 const MapScreen = () => {
+
+  const dispatch = useDispatch();
   const origin = useSelector(selectOrigin);
   const pickup = useSelector(selectPickupDestination);
   const dropoff = useSelector(selectDropoffDestination);
   const mapRef = useRef(null);
   const [bool, toggleBool] = useState(true);
   const [bool2, toggleBool2] = useState(true);
-
 
   // const state = useSelector((state) => state);
   // console.log('Entire Redux State:', state);
@@ -31,7 +33,6 @@ const MapScreen = () => {
     if(!origin || !pickup || !dropoff) return;
 
     // Zoom & fit to markers
-    
     const timer = setTimeout(() => {
       mapRef.current.fitToSuppliedMarkers(['origin-m', 'pickup-m', 'dropoff-m'], {
         edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
@@ -41,6 +42,7 @@ const MapScreen = () => {
   }, [origin, pickup, dropoff])
 
   return (
+    
     <MapView
       initialRegion={{
         latitude: 38.9032433,
@@ -48,7 +50,7 @@ const MapScreen = () => {
         latitudeDelta: 0.005,
         longitudeDelta: 0.005,
       }}
-      style={tw`flex-1`}
+      style={styles.mapStyling}
       ref={mapRef}
     >
       {origin?.lat && origin?.lng && (
@@ -122,10 +124,16 @@ const MapScreen = () => {
             }, 0);
           }}
         />)}
+      
     </MapView>
   );
 };
 
 export default MapScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  mapStyling: {
+    width: 415,
+    height: 700,
+  }
+});

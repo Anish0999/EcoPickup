@@ -2,10 +2,9 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import tw from 'tailwind-react-native-classnames';
-import { setOrigin, setPickupDestination, setDropoffDestination } from '../slices/navigationSlice';
+import { setOrigin, setPickupDestination, setDropoffDestination, setHomeAnimation, setMapActive} from '../slices/navigationSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigation } from "@react-navigation/native";
-
 
 const lineBarIMG = require("../images/linebar.png");
 
@@ -13,6 +12,8 @@ const OppCard = ({startingLocation, pickUpInfo, pickUpAddress, dropOffInfo, drop
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
+
+
 
   const handleAccept = (sCoords, pCoords, dCoords) => {
     // console.log(sCoords);
@@ -22,13 +23,16 @@ const OppCard = ({startingLocation, pickUpInfo, pickUpAddress, dropOffInfo, drop
     dispatch(setOrigin(sCoords));
     dispatch(setPickupDestination(pCoords));
     dispatch(setDropoffDestination(dCoords));
-
-    navigation.navigate("MapScreen")
+    dispatch(setMapActive(true));
+    dispatch(setHomeAnimation("slide_from_left"));
+    navigation.navigate("MapScreen");
+    setTimeout(()=>{
+        dispatch(setHomeAnimation("none"));
+    }, 0);
   };
 
   return (
       <View style={styles.container}>
-          
           <View style={styles.card}>
               <View style={styles.top}>
                   <Text style={{fontSize: 20}}>$17.82 Tony Pizzeria ⭐4.9</Text>

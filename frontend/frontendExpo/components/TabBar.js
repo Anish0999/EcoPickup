@@ -16,7 +16,7 @@ const TabBar = () => {
 
   return (
     <View style={styles.tabBarContainer}>
-      <TouchableOpacity onPress={()=>{navigation.navigate("MapScreen") 
+      <TouchableOpacity onPress={()=>{navigation.navigate("MapScreenInactive") 
                       changeCar("car-sport")
                       changeMoney("cash-outline")
                       changeOpp("mail-outline")}}>
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     tabBarContainer: {
         borderWidth: 1,
         // borderColor: "red",
-        height: 110,
+        height: 75,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-evenly"
