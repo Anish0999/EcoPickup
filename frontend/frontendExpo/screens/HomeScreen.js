@@ -82,7 +82,9 @@ const HomeScreen = () => {
         <View
           style={[styles.activeTabContainer, { height: mapActive ? 140 : 60 }]}
         >
-          <PickUpBar/>
+          <PickUpBar
+          pickupName={"Tony Pizzeria"}
+          />
         </View>
       )}
     </SafeAreaView>

@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 const TabBar = () => {
 

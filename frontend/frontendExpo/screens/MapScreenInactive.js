@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Dimensions, StyleSheet, Text, View } from "react-native";
 import React, { useEffect } from "react";
 import tw from "tailwind-react-native-classnames";
 import MapView from "react-native-maps";
@@ -16,10 +16,14 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import TabBar from "../components/TabBar";
+import LeftMenu from "../components/LeftMenu";
+import ShowBalance from "../components/ShowBalance";
+
 
 const MapScreenInactive = () => {
 
   return (
+    <View style={tw`flex-1`}>
     <MapView
       initialRegion={{
         latitude: 38.9032433,
@@ -29,9 +33,11 @@ const MapScreenInactive = () => {
       }}
       style={tw`flex-1`}
     >
-      
+      <LeftMenu/>
+      <ShowBalance/>
+     
     </MapView>
-    
+    </View>
   );
 };
 

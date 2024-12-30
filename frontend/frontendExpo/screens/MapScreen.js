@@ -15,6 +15,8 @@ import MapViewDirections from "react-native-maps-directions";
 import { useState } from "react";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
+import LeftMenu from "../components/LeftMenu";
+import ShowBalance from "../components/ShowBalance";
 
 const MapScreen = () => {
 
@@ -43,6 +45,7 @@ const MapScreen = () => {
 
   return (
     
+    <View>
     <MapView
       initialRegion={{
         latitude: 38.9032433,
@@ -124,8 +127,13 @@ const MapScreen = () => {
             }, 0);
           }}
         />)}
+
+        <LeftMenu/>
+        <ShowBalance/>
+
       
     </MapView>
+    </View>
   );
 };
 
