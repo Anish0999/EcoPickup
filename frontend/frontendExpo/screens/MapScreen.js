@@ -45,7 +45,7 @@ const MapScreen = () => {
 
   return (
     
-    <View>
+    <View style={{flex: 1}}>
     <MapView
       initialRegion={{
         latitude: 38.9032433,
@@ -141,6 +141,7 @@ export default MapScreen;
 
 const styles = StyleSheet.create({
   mapStyling: {
+    flex: 1,
     width: 415,
     height: 700,
   }

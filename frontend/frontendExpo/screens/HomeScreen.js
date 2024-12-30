@@ -31,10 +31,11 @@ const HomeScreen = () => {
   const mapActive = useSelector(selectMapActive);
 
   const Stack = createNativeStackNavigator();
+
   return (
     <View style={styles.mainContainer}>
-      {console.log(mapActive)}
-      <View style={[styles.mapContainer, { height: mapActive ? 700 : 770 }]}>
+      <View style={[styles.mapContainer, {marginBottom: mapActive ? 135 : 0}]}
+      >
         <Stack.Navigator>
           <Stack.Screen
             name="MapScreenInactive"
@@ -72,6 +73,7 @@ const HomeScreen = () => {
           />
         </Stack.Navigator>
       </View>
+
       {!mapActive && (
         <View style={styles.tabContainer}>
           <TabBar />
@@ -80,42 +82,43 @@ const HomeScreen = () => {
 
       {mapActive && (
         <View
-          style={[styles.activeTabContainer, { height: 140}]}
+          style={[
+            styles.activeTabContainer,
+            { height: 10 }, // Dynamic inline height adjustment if needed
+          ]}
         >
-          <PickUpBar
-          pickupName={"Tony Pizzeria"}
-          />
+          <PickUpBar pickupName={"Tony Pizzeria"} />
         </View>
       )}
     </View>
   );
 };
 
-export default HomeScreen;
-
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
+    backgroundColor: "white",
   },
   mapContainer: {
+    flex: 1, // Default flex value, marginBottom: 135
+    marginBottom: 135,
     // borderWidth: 1,
-    // borderColor: "green", 720, 110-- Map Normal: 770 -> 700
-    // height: 700,
-    flex: 1,
   },
   tabContainer: {
-    borderWidth: 1,
-    borderColor: "gray",
     height: 80,
     backgroundColor: "white",
-    // marginTop: 55,
+    justifyContent: "center",
+    alignItems: "center",
+    borderTopWidth: 1,
+    borderTopColor: "#ddd",
   },
   activeTabContainer: {
-    // 60 -> 140
-    borderWidth: 1,
-    borderColor: "red",
-    height: 140,
     backgroundColor: "white",
-    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    borderTopWidth: 1,
+    borderTopColor: "#ddd",
   },
 });
+
+export default HomeScreen;
