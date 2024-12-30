@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         alignItems: "center",
         justifyContent: "center",
-        top: 10,
+        top: 40,
         position: "absolute",
         left: Dimensions.get('window').width / 2 - 50,
          shadowOffset: { width: 0, height: 1 },

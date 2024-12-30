@@ -32,7 +32,7 @@ const HomeScreen = () => {
 
   const Stack = createNativeStackNavigator();
   return (
-    <SafeAreaView>
+    <View style={styles.mainContainer}>
       {console.log(mapActive)}
       <View style={[styles.mapContainer, { height: mapActive ? 700 : 770 }]}>
         <Stack.Navigator>
@@ -80,30 +80,35 @@ const HomeScreen = () => {
 
       {mapActive && (
         <View
-          style={[styles.activeTabContainer, { height: mapActive ? 140 : 60 }]}
+          style={[styles.activeTabContainer, { height: 140}]}
         >
           <PickUpBar
           pickupName={"Tony Pizzeria"}
           />
         </View>
       )}
-    </SafeAreaView>
+    </View>
   );
 };
 
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+  },
   mapContainer: {
-    borderWidth: 1,
+    // borderWidth: 1,
     // borderColor: "green", 720, 110-- Map Normal: 770 -> 700
     // height: 700,
+    flex: 1,
   },
   tabContainer: {
     borderWidth: 1,
     borderColor: "gray",
-    height: 70,
+    height: 80,
     backgroundColor: "white",
+    // marginTop: 55,
   },
   activeTabContainer: {
     // 60 -> 140

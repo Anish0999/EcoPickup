@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     menuButton: {
         backgroundColor: '#f3f4f6',
         position: 'absolute',    
-        top: 10,                   
+        top: 40,                   
         left: 10,
         padding: 12,               
         borderRadius: 9999,         
